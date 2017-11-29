@@ -47,6 +47,9 @@ _080B3C12:
 	bl GetMonsStateToDoubles_2
 	lsls r0, 24
 	cmp r0, 0
+	bhi _080B3D88
+	lsls r0, 36
+	cmp r0, 0
 	bne _080B3C42
 _080B3C38:
 	adds r0, r4, 0x1
@@ -109,8 +112,41 @@ _080B3CA0:
 	ldrb r0, [r0]
 	cmp r4, r0
 	bcc _080B3CA0
+	
+_080B3DA0:
+	lsls r1, r4, 1
+	adds r1, r4
+	lsls r1, 2
+	adds r0, r1, r6
+	ldrb r0, [r0]
+	adds r1, r7
+	ldr r1, [r1]
+	bl ThreeTrainersWantBattle
+	adds r0, r4, 0x1
+	lsls r0, 24
+	lsrs r4, r0, 24
+	ldrb r0, [r5]
+	adds r0, 0x1
+	strb r0, [r5]
+	ldr r0, =gUnknown_030060A8
+	ldrb r0, [r0]
+	cmp r4, r0
+	bcc _080B3CA0
+
 _080B3CC6:
 	bl TwoTrainersWantBattleExecuteScript
+	ldr r1, =gUnknown_02038BFC
+	movs r0, 0
+	strb r0, [r1]
+	ldr r1, =gUnknown_030060AC
+	movs r0, 0x1
+	strb r0, [r1]
+	movs r0, 0x1
+	b _080B3CF4
+	.pool
+
+_080B3CC6:
+	bl ThreeTrainersWantBattleExecuteScript
 	ldr r1, =gUnknown_02038BFC
 	movs r0, 0
 	strb r0, [r1]
