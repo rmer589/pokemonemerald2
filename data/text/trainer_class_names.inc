@@ -15,7 +15,7 @@ gTrainerClassNames:: @ 830FCD4
 	.string "AQUA LEADER$", 13
 	.string "HEX MANIAC$", 13
 	.string "AROMA LADY$", 13
-	.string "RUIN MANIAC$", 13
+	.string "ROCKET ADMIN$", 13
 	.string "INTERVIEWER$", 13
 	.string "TUBER$", 13
 	.string "TUBER$", 13
@@ -28,7 +28,7 @@ gTrainerClassNames:: @ 830FCD4
 	.string "CAMPER$", 13
 	.string "PICNICKER$", 13
 	.string "BUG MANIAC$", 13
-	.string "PSYCHIC$", 13
+	.string "TEAM ROCKET$", 13
 	.string "GENTLEMAN$", 13
 	.string "ELITE FOUR$", 13
 	.string "LEADER$", 13
