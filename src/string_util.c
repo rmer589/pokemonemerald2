@@ -455,9 +455,9 @@ static u8 *ExpandPlaceholder_KunChan(void)
 static u8 *ExpandPlaceholder_RivalName(void)
 {
     if (gSaveBlock2Ptr->playerGender == MALE)
-        return gExpandedPlaceholder_May;
+        return gExpandedPlaceholder_Skye;
     else
-        return gExpandedPlaceholder_Brendan;
+        return gExpandedPlaceholder_Ronald;
 }
 
 static u8 *ExpandPlaceholder_Version(void)
