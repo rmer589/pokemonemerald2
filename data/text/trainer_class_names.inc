@@ -5,8 +5,8 @@ gTrainerClassNames:: @ 830FCD4
 	.string "TEAM AQUA$", 13
 	.string "{PKMN} BREEDER$", 13
 	.string "COOLTRAINER$", 13
-	.string "BIRD KEEPER$", 13
-	.string "COLLECTOR$", 13
+	.string "ADMINISTRATOR$", 13
+	.string "EXECUTIVE$", 13
 	.string "SWIMMER♂$", 13
 	.string "TEAM MAGMA$", 13
 	.string "EXPERT$", 13
