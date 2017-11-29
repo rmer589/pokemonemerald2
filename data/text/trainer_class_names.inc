@@ -1,7 +1,7 @@
 gTrainerClassNames:: @ 830FCD4
 	.string "{PKMN} TRAINER$", 13
 	.string "{PKMN} TRAINER$", 13
-	.string "HIKER$", 13
+	.string "{PKMN} TRAINER$", 13
 	.string "TEAM AQUA$", 13
 	.string "{PKMN} BREEDER$", 13
 	.string "COOLTRAINER$", 13
