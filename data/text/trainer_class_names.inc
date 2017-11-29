@@ -65,3 +65,4 @@ gTrainerClassNames:: @ 830FCD4
 	.string "PIKE QUEEN$", 13
 	.string "PYRAMID KING$", 13
 	.string "{PKMN} TRAINER$", 13
+	.string "{PKMN} TRAINER$", 13
