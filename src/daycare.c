@@ -445,12 +445,11 @@ static s32 GetSlotToInheritNature(struct DayCare *daycare)
             slot = i;
     }
 
-    // search for ditto
-    for (dittoCount = 0, i = 0; i < DAYCARE_MON_COUNT; i++)
+    // search for male gender
+    for (i = 0; i < DAYCARE_MON_COUNT; i++)
     {
-        species[i] = GetBoxMonData(&daycare->mons[i].mon, MON_DATA_SPECIES);
-        if (species[i] == SPECIES_DITTO)
-            dittoCount++, slot = i;
+        if (GetBoxMonGender(&daycare->mons[i].mon) == MON_MALE)
+            slot = i;
     }
 
     // coin flip on ...two Dittos
