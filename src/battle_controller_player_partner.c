@@ -1337,6 +1337,27 @@ static void PlayerPartnerHandleDrawTrainerPic(void)
         xPos = 90;
         yPos = (8 - gTrainerBackPicCoords[trainerPicId].coords) * 4 + 80;
     }
+    
+    if (gPartnerTrainerId == WALLY_PARTNER_ID)
+    {
+        trainerPicId = BACK_PIC_WALLY;
+        xPos = 90;
+        yPos = (8 - gTrainerBackPicCoords[trainerPicId].coords) * 4 + 80;
+    }
+    checkgender    
+    if player is male(gPartnerTrainerId == MAY_PARTNER_ID)
+    {
+        trainerPicId = BACK_PIC_MAY;
+        xPos = 90;
+        yPos = (8 - gTrainerBackPicCoords[trainerPicId].coords) * 4 + 80;
+    }
+    checkgender
+        if player is female(gPartnerTrainerId == BRENDAN_PARTNER_ID)
+    {
+        trainerPicId = BACK_PIC_BRENDAN;
+        xPos = 90;
+        yPos = (8 - gTrainerBackPicCoords[trainerPicId].coords) * 4 + 80;
+    }
     else
     {
         trainerPicId = GetFrontierTrainerFrontSpriteId(gPartnerTrainerId);
@@ -1344,7 +1365,7 @@ static void PlayerPartnerHandleDrawTrainerPic(void)
         yPos = (8 - gTrainerFrontPicCoords[trainerPicId].coords) * 4 + 80;
     }
 
-    // Use back pic only if the partner is Steven
+    // Use back pic only if the partner is Steven, Wally, May, Brendan
     if (gPartnerTrainerId == STEVEN_PARTNER_ID)
     {
         DecompressTrainerBackPic(trainerPicId, gActiveBank);
