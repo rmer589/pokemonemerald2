@@ -803,7 +803,10 @@ static u16 DetermineEggSpeciesAndParentSlots(struct DayCare *daycare, u8 *parent
     {
         eggSpecies = SPECIES_VOLBEAT;
     }
-
+    if (eggSpecies == SPECIES_HOOH && daycare->offspringPersonality & 0x8000)
+    {
+        eggSpecies = SPECIES_LUGIA;
+    {   
     // Make Ditto the "mother" slot if the other daycare mon is male.
     if (species[parentSlots[1]] == SPECIES_DITTO && GetBoxMonGender(&daycare->mons[parentSlots[0]].mon) != MON_FEMALE)
     {
@@ -1029,7 +1032,8 @@ static bool8 EggGroupsOverlap(u16 *eggGroups1, u16 *eggGroups2)
         }
     }
 
-    return FALSE;
+    if (eggGroups1[i] == eggGroups2[j])
+                return FALSE ;
 }
 
 static u8 GetDaycareCompatibilityScore(struct DayCare *daycare)
@@ -1053,28 +1057,29 @@ static u8 GetDaycareCompatibilityScore(struct DayCare *daycare)
     }
 
     // check unbreedable egg group
-    if (eggGroups[0][0] == EGG_GROUP_UNDISCOVERED || eggGroups[1][0] == EGG_GROUP_UNDISCOVERED)
+    if (eggGroups[0][0] == EGG_GROUP_MINERAL || eggGroups[1][0] == EGG_GROUP_MINERAL)
         return 0;
     // two Ditto can't breed
     if (eggGroups[0][0] == EGG_GROUP_DITTO && eggGroups[1][0] == EGG_GROUP_DITTO)
         return 0;
 
-    // now that we checked, one ditto can breed with any other mon
+    // now that we checked, ditto cannot breed with any other mon
     if (eggGroups[0][0] == EGG_GROUP_DITTO || eggGroups[1][0] == EGG_GROUP_DITTO)
+        return 0;
     {
         if (trainerIds[0] == trainerIds[1]) // same trainer
-            return 20;
+            return 200;
 
-        return 50; // different trainers, more chance of poke sex
+        return 100; // different trainers, more chance of poke sex
     }
     else
     {
-        if (genders[0] == genders[1]) // no homo
-            return 0;
+        if (genders[0] == genders[1]) // yes homo
+            return 200;
         if (genders[0] == MON_GENDERLESS || genders[1] == MON_GENDERLESS)
-            return 0;
-        if (!EggGroupsOverlap(eggGroups[0], eggGroups[1])) // not compatible with each other
-            return 0;
+            return 200;
+        if (!EggGroupsOverlap(eggGroups[0], eggGroups[1])) // compatible with each other
+            return 200;
 
         if (species[0] == species[1]) // same species
         {
