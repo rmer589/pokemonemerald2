@@ -1164,6 +1164,7 @@ u16 GetBattleBGM(void)
         {
         case CLASS_AQUA_LEADER:
         case CLASS_MAGMA_LEADER:
+        case CLASS_FUSION_BOSS        
             return 0x1E3;
         case CLASS_TEAM_AQUA:
         case CLASS_TEAM_MAGMA:
