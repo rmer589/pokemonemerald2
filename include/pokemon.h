@@ -125,30 +125,31 @@
 #define TYPE_ICE      0x0f
 #define TYPE_DRAGON   0x10
 #define TYPE_DARK     0x11
+#dedine TYPE_LIGHT    0x12
 
-#define NUMBER_OF_MON_TYPES     0x12
+#define NUMBER_OF_MON_TYPES     0x13
 
 #define PARTY_SIZE 6
 #define MAX_TOTAL_EVS 510
 #define NUM_STATS 6
 #define UNOWN_FORM_COUNT 28
-#define MAX_MON_LEVEL 100
+#define MAX_MON_LEVEL 1000
 
 enum
 {
     EGG_GROUP_NONE,
     EGG_GROUP_MONSTER,
-    EGG_GROUP_WATER_1,
+    EGG_GROUP_WATER,
     EGG_GROUP_BUG,
     EGG_GROUP_FLYING,
     EGG_GROUP_FIELD,
     EGG_GROUP_FAIRY,
     EGG_GROUP_GRASS,
     EGG_GROUP_HUMAN_LIKE,
-    EGG_GROUP_WATER_3,
+    EGG_GROUP_LEGEND,
     EGG_GROUP_MINERAL,
     EGG_GROUP_AMORPHOUS,
-    EGG_GROUP_WATER_2,
+    EGG_GROUP_HYBRID,
     EGG_GROUP_DITTO,
     EGG_GROUP_DRAGON,
     EGG_GROUP_UNDISCOVERED
@@ -358,12 +359,15 @@ struct BattlePokemon
     /*0x20*/ u8 ability;
     /*0x21*/ u8 type1;
     /*0x22*/ u8 type2;
-    /*0x23*/ u8 unknown;
-    /*0x24*/ u8 pp[4];
+    /*0x23*/ u8 type3;
+    /*0x24*/ u8 type4;
+    /*0x25*/ u8 type5;
+    /*0x26*/ u8 type6;
+    /*0x27*/ u8 pp[4];
     /*0x28*/ u16 hp;
     /*0x2A*/ u8 level;
-    /*0x2B*/ u8 friendship;
-    /*0x2C*/ u16 maxHP;
+    /*0x2C*/ u8 friendship;
+    /*0x2D*/ u16 maxHP;
     /*0x2E*/ u16 item;
     /*0x30*/ u8 nickname[POKEMON_NAME_LENGTH + 1];
     /*0x3B*/ u8 ppBonuses;
@@ -377,24 +381,26 @@ struct BattlePokemon
 
 enum
 {
-    STAT_STAGE_HP,       // 0
-    STAT_STAGE_ATK,      // 1
-    STAT_STAGE_DEF,      // 2
-    STAT_STAGE_SPEED,    // 3
-    STAT_STAGE_SPATK,    // 4
-    STAT_STAGE_SPDEF,    // 5
-    STAT_STAGE_ACC,      // 6
-    STAT_STAGE_EVASION,  // 7
+    STAT_STAGE_HEALTH_POINTS,       // 0
+    STAT_STAGE_ATTACK,              // 1
+    STAT_STAGE_DEFENSE,             // 2
+    STAT_STAGE_SPEED,               // 3
+    STAT_STAGE_SPECIAL_ATTACK,      // 4
+    STAT_STAGE_SPECIAL_DEFENSE,     // 5
+    STAT_STAGE_ACCURACY,            // 6
+    STAT_STAGE_EVASION,             // 7
 };
 
 enum
 {
-    STAT_HP,     // 0
-    STAT_ATK,    // 1
-    STAT_DEF,    // 2
-    STAT_SPD,    // 3
-    STAT_SPATK,  // 4
-    STAT_SPDEF,  // 5
+    STAT_HEATH_POINTS,         // 0
+    STAT_ATTACK,               // 1
+    STAT_DEFENSE,              // 2
+    STAT_SPEED,                // 3
+    STAT_SPECIAL_ATTACK,       // 4
+    STAT_SPECIAL_DEFENSE,      // 5
+    STAT_ACCURACY,             // 6
+    STAT_EVASION,              // 7
 };
 
 struct BaseStats
@@ -413,9 +419,9 @@ struct BaseStats
  /* 0x0A */ u16 evYield_Attack:2;
  /* 0x0A */ u16 evYield_Defense:2;
  /* 0x0A */ u16 evYield_Speed:2;
- /* 0x0B */ u16 evYield_SpAttack:2;
- /* 0x0B */ u16 evYield_SpDefense:2;
- /* 0x0C */ u16 item1;
+ /* 0x0A */ u16 evYield_SpAttack:2;
+ /* 0x0A */ u16 evYield_SpDefense:2;
+ /* 0x0B */ u16 item1;
  /* 0x0E */ u16 item2;
  /* 0x10 */ u8 genderRatio;
  /* 0x11 */ u8 eggCycles;
@@ -425,8 +431,11 @@ struct BaseStats
  /* 0x15 */ u8 eggGroup2;
  /* 0x16 */ u8 ability1;
  /* 0x17 */ u8 ability2;
- /* 0x18 */ u8 safariZoneFleeRate;
- /* 0x19 */ u8 bodyColor : 7;
+ /* 0x18 */ u8 ability3;
+ /* 0x1A */ u8 ability1;
+ /* 0x1B */ u8 ability2   
+ /* 0x1C */ u8 safariZoneFleeRate;
+ /* 0x1D */ u8 bodyColor : 7;
             u8 noFlip : 1;
 };
 
@@ -496,11 +505,11 @@ enum
 #define EVO_LEVEL_ATK_GT_DEF 0x0008 // Pokémon reaches the specified level with attack > defense
 #define EVO_LEVEL_ATK_EQ_DEF 0x0009 // Pokémon reaches the specified level with attack = defense
 #define EVO_LEVEL_ATK_LT_DEF 0x000a // Pokémon reaches the specified level with attack < defense
-#define EVO_LEVEL_SILCOON    0x000b // Pokémon reaches the specified level with a Silcoon personality value
-#define EVO_LEVEL_CASCOON    0x000c // Pokémon reaches the specified level with a Cascoon personality value
-#define EVO_LEVEL_NINJASK    0x000d // Pokémon reaches the specified level (special value for Ninjask)
-#define EVO_LEVEL_SHEDINJA   0x000e // Pokémon reaches the specified level (special value for Shedinja)
-#define EVO_BEAUTY           0x000f // Pokémon levels up with beauty ≥ specified value
+#define EVO_LEVEL_SILCOON    0x000b // Pokémon reaches the specified level
+#define EVO_LEVEL_CASCOON    0x000c // Pokémon reaches the specified level
+#define EVO_LEVEL_NINJASK    0x000d // Pokémon reaches the specified level
+#define EVO_LEVEL_SHEDINJA   0x000e // Pokémon reaches the specified level
+#define EVO_BEAUTY           0x000f // Pokémon levels up
 
 struct Evolution
 {
@@ -509,7 +518,7 @@ struct Evolution
     u16 targetSpecies;
 };
 
-#define EVOS_PER_MON 5
+#define EVOS_PER_MON 20
 
 struct EvolutionData
 {
