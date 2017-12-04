@@ -125,7 +125,7 @@
 #define TYPE_ICE      0x0f
 #define TYPE_DRAGON   0x10
 #define TYPE_DARK     0x11
-#dedine TYPE_LIGHT    0x12
+#define TYPE_LIGHT    0x12
 
 #define NUMBER_OF_MON_TYPES     0x13
 
@@ -499,17 +499,17 @@ enum
 #define EVO_FRIENDSHIP_DAY   0x0002 // Pokémon levels up during the day with friendship ≥ 220
 #define EVO_FRIENDSHIP_NIGHT 0x0003 // Pokémon levels up at night with friendship ≥ 220
 #define EVO_LEVEL            0x0004 // Pokémon reaches the specified level
-#define EVO_TRADE            0x0005 // Pokémon is traded
-#define EVO_TRADE_ITEM       0x0006 // Pokémon is traded while it's holding the specified item
+#define EVO_ITEM             0x0005 // specified item is used on Pokémon
+#define EVO_ITEM             0x0006 // specified item is used on Pokémon
 #define EVO_ITEM             0x0007 // specified item is used on Pokémon
-#define EVO_LEVEL_ATK_GT_DEF 0x0008 // Pokémon reaches the specified level with attack > defense
-#define EVO_LEVEL_ATK_EQ_DEF 0x0009 // Pokémon reaches the specified level with attack = defense
-#define EVO_LEVEL_ATK_LT_DEF 0x000a // Pokémon reaches the specified level with attack < defense
-#define EVO_LEVEL_SILCOON    0x000b // Pokémon reaches the specified level
-#define EVO_LEVEL_CASCOON    0x000c // Pokémon reaches the specified level
-#define EVO_LEVEL_NINJASK    0x000d // Pokémon reaches the specified level
-#define EVO_LEVEL_SHEDINJA   0x000e // Pokémon reaches the specified level
-#define EVO_BEAUTY           0x000f // Pokémon levels up
+#define EVO_LEVEL            0x0008 // Pokémon reaches the specified level
+#define EVO_LEVEL            0x0009 // Pokémon reaches the specified level
+#define EVO_LEVEL            0x000a // Pokémon reaches the specified level
+#define EVO_LEVEL            0x000b // Pokémon reaches the specified level
+#define EVO_LEVEL            0x000c // Pokémon reaches the specified level
+#define EVO_WISH_MEGA        0x000d // Pokémon can mega evolved through a wish
+#define EVO_MEGA_EVOLUTION   0x000e // Pokémon can mega evolved
+#define EVO_PRIMAL_REVERSION 0x000f // Pokémon can revert to their primal forms
 
 struct Evolution
 {
