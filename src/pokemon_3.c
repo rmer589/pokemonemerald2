@@ -1152,19 +1152,12 @@ u16 GetBattleBGM(void)
     if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_x2000000))
         return 0x1DC;
     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
-    {
-        u8 trainerClass;
-        if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
-            trainerClass = GetFrontierOpponentClass(gTrainerBattleOpponent_A);
-        else if (gBattleTypeFlags & BATTLE_TYPE_x4000000)
-            trainerClass = CLASS_EXPERT;
-        else
-            trainerClass = gTrainers[gTrainerBattleOpponent_A].trainerClass;
         switch (trainerClass)
         {
-        case CLASS_AQUA_LEADER:
-        case CLASS_MAGMA_LEADER:
-        case CLASS_FUSION_BOSS        
+        case CLASS_TG_LEADER:
+        case CLASS_TH_LEADER:
+        case CLASS_TR_LEADER:
+        case CLASS_TE_LEADER:
             return 0x1E3;
         case CLASS_TEAM_AQUA:
         case CLASS_TEAM_MAGMA:
@@ -1176,10 +1169,7 @@ u16 GetBattleBGM(void)
         case CLASS_CHAMPION:
             return 0x1DE;
         case CLASS_PKMN_TRAINER_RIVAL:
-            if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
-                return 0x1E1;
-            if (!StringCompare(gTrainers[gTrainerBattleOpponent_A].trainerName, gText_BattleWallyName))
-                return 0x1DC;
+        case CLASS_PKMN_TRAINER_PLAYER:    
             return 0x1E1;
         case CLASS_ELITE_FOUR:
             return 0x1E2;
